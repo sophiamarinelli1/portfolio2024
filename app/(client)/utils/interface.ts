@@ -14,6 +14,8 @@ export interface Post {
 				url: string;
 			};
 		}>;
+		display: string;
+		zoom: boolean;
 	};
 }
 

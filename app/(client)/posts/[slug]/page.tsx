@@ -4,6 +4,7 @@ import { client } from "@/sanity/lib/client";
 import { Post } from "../../utils/interface";
 import Link from "next/link";
 import { PortableText } from "next-sanity";
+import Carousel from "../../components/Carousel";
 
 interface Params {
 	params: {
@@ -61,11 +62,14 @@ const page = async ({ params }: Params) => {
 						<img
 							key={image.asset._ref}
 							src={image.asset.url}
-							alt="Gallery Image"
+							alt="gallery image"
 							className="gallery-image"
 						/>
 					))}
 				</div>
+			)}
+			{post?.gallery && post.gallery.images?.length > 0 && (
+				<Carousel post={post} />
 			)}
 		</div>
 	);
