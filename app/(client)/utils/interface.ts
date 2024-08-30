@@ -34,3 +34,12 @@ export interface Tag {
 	slug: { current: string };
 	_id: string;
 }
+
+export interface About {
+	title: string;
+	bio: string;
+	former: string;
+	current: string;
+	other: string;
+	_id: string;
+}

@@ -10,7 +10,7 @@ interface Props {
 
 const PostComponent = ({ post }: Props) => {
 	return (
-		<div>
+		<div className="">
 			<Link href={`/posts/${post?.slug?.current}`}>
 				<Image
 					src={urlFor(post?.poster).url()}
