@@ -6,7 +6,15 @@ interface Props {
 }
 
 const AboutComponent = ({ about }: Props) => {
-	return <div>{about.bio}</div>;
+	return (
+		<div>
+			<h1>{about.bio}</h1>
+			<p>Previously at:</p>
+			<p>{about.former}</p>
+			<p>Currently at:</p>
+			<p>{about.current}</p>
+		</div>
+	);
 };
 
 export default AboutComponent;

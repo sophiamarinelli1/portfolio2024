@@ -16,6 +16,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ playbackId, title }) => {
 		<MuxPlayer
 			playbackId={playbackId}
 			metadata={title ? { video_title: title } : undefined}
+			autoPlay
 		/>
 	);
 };

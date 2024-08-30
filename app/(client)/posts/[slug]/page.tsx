@@ -6,6 +6,8 @@ import Link from "next/link";
 import { PortableText } from "next-sanity";
 import Carousel from "../../components/Carousel";
 import VideoPlayer from "../../components/VideoPlayer";
+import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
 interface Params {
 	params: {
@@ -59,17 +61,26 @@ const page = async ({ params }: Params) => {
 			<div>
 				<span>{new Date(post?.date).toDateString()}</span>
 			</div>
-			<div>
+			<PortableText value={post.body} />
+			{post?.gallery && post.gallery.images?.length > 0 && (
+				<Carousel post={post} />
+			)}
+			{/* <div>
 				{post?.tags?.map((tag) => (
 					<Link key={tag?._id} href={`/tag/${tag.slug.current}`}>
 						<span>{tag.name}</span>
 					</Link>
 				))}
+			</div> */}
+			<div>
+				<Image
+					src={urlFor(post?.poster).url()}
+					alt={post?.title}
+					width={1000}
+					height={1000}
+				/>
 			</div>
-			<PortableText value={post.body} />
-			{post?.gallery && post.gallery.images?.length > 0 && (
-				<Carousel post={post} />
-			)}
+
 			{post?.videoBlogPost?.video?.asset?.playbackId && (
 				<VideoPlayer
 					playbackId={post.videoBlogPost.video.asset.playbackId}
