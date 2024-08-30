@@ -5,6 +5,7 @@ import { Post } from "../../utils/interface";
 import Link from "next/link";
 import { PortableText } from "next-sanity";
 import Carousel from "../../components/Carousel";
+import VideoPlayer from "../../components/VideoPlayer";
 
 interface Params {
 	params: {
@@ -33,7 +34,17 @@ async function getPost(slug: string) {
 					url
 				}
 			}
-		}
+		},
+		"videoBlogPost": videoBlogPost {
+    	video {
+      	asset->{
+        playbackId,
+        assetId,
+        filename,
+        url
+      }
+    }
+  }
 	}`;
 	const post = await client.fetch(query);
 	return post;
@@ -57,19 +68,13 @@ const page = async ({ params }: Params) => {
 			</div>
 			<PortableText value={post.body} />
 			{post?.gallery && post.gallery.images?.length > 0 && (
-				<div className="gallery">
-					{post.gallery.images.map((image) => (
-						<img
-							key={image.asset._ref}
-							src={image.asset.url}
-							alt="gallery image"
-							className="gallery-image"
-						/>
-					))}
-				</div>
-			)}
-			{post?.gallery && post.gallery.images?.length > 0 && (
 				<Carousel post={post} />
+			)}
+			{post?.videoBlogPost?.video?.asset?.playbackId && (
+				<VideoPlayer
+					playbackId={post.videoBlogPost.video.asset.playbackId}
+					title={post.videoBlogPost.video.asset.filename}
+				/>
 			)}
 		</div>
 	);

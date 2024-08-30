@@ -17,6 +17,16 @@ export interface Post {
 		display: string;
 		zoom: boolean;
 	};
+	videoBlogPost?: {
+		video?: {
+			asset: {
+				playbackId?: string;
+				assetId?: string;
+				filename?: string;
+				url?: string;
+			};
+		};
+	};
 }
 
 export interface Tag {

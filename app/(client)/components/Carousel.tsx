@@ -24,29 +24,32 @@ const Carousel = ({ post }: Props) => {
 	};
 
 	return (
-		<div className="carousel-container">
+		<div className="relative max-w-full mx-auto">
 			{images.length > 0 && (
 				<>
-					<div className="carousel">
+					<div className="carousel-container w-full h-screen overflow-hidden relative">
 						<img
 							src={images[currentIndex].asset.url}
 							alt={`Slide ${currentIndex + 1}`}
-							className="carousel-image"
+							className="w-full h-full object-cover"
 						/>
 					</div>
-					<div className="carousel-controls">
-						<button onClick={goToPrevious}>Previous</button>
-						<button onClick={goToNext}>Next</button>
+					<div className="carousel-controls absolute inset-0 flex justify-between items-center p-4">
+						<button
+							onClick={goToPrevious}
+							className="bg-black bg-opacity-50 text-white p-2 rounded-full">
+							Previous
+						</button>
+						<button
+							onClick={goToNext}
+							className="bg-black bg-opacity-50 text-white p-2 rounded-full">
+							Next
+						</button>
 					</div>
-					<div className="carousel-indicators">
-						{images.map((_, index) => (
-							<span
-								key={index}
-								className={`indicator ${
-									index === currentIndex ? "active" : ""
-								}`}
-								onClick={() => setCurrentIndex(index)}></span>
-						))}
+					<div className="absolute bottom-0 left-0 right-0 flex justify-center items-center mb-4">
+						<span className="bg-black bg-opacity-50 text-white px-3 py-1 rounded-full">
+							{currentIndex + 1} / {images.length}
+						</span>
 					</div>
 				</>
 			)}

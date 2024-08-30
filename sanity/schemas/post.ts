@@ -86,6 +86,19 @@ export const post = {
 			],
 		},
 		{
+			name: "videoBlogPost",
+			title: "Video blog post",
+			type: "object",
+			fields: [
+				{
+					title: "Video file",
+					name: "video",
+					type: "mux.video",
+				},
+			],
+		},
+
+		{
 			name: "gallery",
 			type: "object",
 			title: "Gallery",
