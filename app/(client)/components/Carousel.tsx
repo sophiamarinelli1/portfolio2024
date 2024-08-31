@@ -34,27 +34,27 @@ const Carousel = ({ post }: Props) => {
 						<Image
 							src={urlFor(images[currentIndex]).url()}
 							alt={`Slide ${currentIndex + 1}`}
-							className="w-full h-full object-cover"
+							className="w-full h-full object-cover mix-blend-multiply saturate-0"
 							width={700}
 							height={700}
 						/>
 					</div>
-					<div className="carousel-controls absolute inset-0 flex justify-between items-center px-6">
+					<div className="carousel-controls absolute bottom-0 flex justify-between w-full items-center px-6">
 						<button
 							onClick={goToPrevious}
-							className="text-white p-2 mix-blend-difference">
+							className=" text-red-600 p-2 mix-blend-difference">
 							Previous
 						</button>
+						<div className="">
+							<span className=" text-red-600 px-3 py-1 mix-blend-difference">
+								{currentIndex + 1} / {images.length}
+							</span>
+						</div>
 						<button
 							onClick={goToNext}
-							className="text-white p-2 mix-blend-difference">
-							<ArrowRight />
+							className="flex-1 text-red-600 p-2 mix-blend-difference">
+							Next
 						</button>
-					</div>
-					<div className="absolute bottom-0 left-0 right-0 flex justify-center items-center mb-4">
-						<span className="text-white px-3 py-1 mix-blend-difference">
-							{currentIndex + 1} / {images.length}
-						</span>
 					</div>
 				</>
 			)}

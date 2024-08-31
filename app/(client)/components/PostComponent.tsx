@@ -14,8 +14,8 @@ interface Props {
 
 const PostComponent = ({ post }: Props) => {
 	return (
-		<div className="w-full">
-			<div className="flex flex-initial justify-between border-black border-b-4 py-1 text-2xl h-full w-full">
+		<div className="w-full border-black border-b-4">
+			<div className="flex flex-initial justify-between items-center py-2 text-2xl w-full">
 				{/* <Image
 					src={urlFor(post?.poster).url()}
 					alt={post?.title}
@@ -30,7 +30,9 @@ const PostComponent = ({ post }: Props) => {
 				{/* <div className="flex-1 px-2 text-right">
 					{post?.tags?.map((tag) => <span key={tag?._id}>{tag?.name} </span>)}
 				</div> */}
-				<Link className="flex-1" href={`/posts/${post?.slug?.current}`}>
+				<Link
+					className="flex-1 w-full flex justify-end"
+					href={`/posts/${post?.slug?.current}`}>
 					<ButtonSmall title="View" />
 				</Link>
 			</div>

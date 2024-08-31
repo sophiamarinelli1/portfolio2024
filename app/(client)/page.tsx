@@ -72,7 +72,7 @@ export default async function Home() {
 					<Button title="Click Here for Inquiries" />
 				</div>
 			</div>
-			<div className=" px-6 py-6 h-full bg-white">
+			<div className=" px-6 py-6 h-full">
 				<Header title="Projects"></Header>
 				<div className="h-full">
 					{posts?.length > 0 &&
