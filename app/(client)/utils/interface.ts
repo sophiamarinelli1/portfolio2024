@@ -4,6 +4,7 @@ export interface Post {
 	slug: { current: string };
 	date: string;
 	excerpt: string;
+	collaborators: string;
 	body: any;
 	tags: Array<Tag>;
 	_id: string;
@@ -37,6 +38,16 @@ export interface Tag {
 
 export interface About {
 	title: string;
+	gallery?: {
+		images: Array<{
+			asset: {
+				_ref: string;
+				url: string;
+			};
+		}>;
+		display: string;
+		zoom: boolean;
+	};
 	bio: string;
 	former: string;
 	current: string;

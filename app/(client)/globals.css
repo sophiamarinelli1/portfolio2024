@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+	font-family: "NeueHaasDisplay-Black";
+	src: url("/fonts/NeueHaasDisplay-Black.woff2");
+}
+
+@font-face {
+	font-family: "NeueHaasDisplay-Bold";
+	src: url("/fonts/NeueHaasDisplay-Bold.woff2");
+}
+
+@font-face {
+	font-family: "NeueHaasDisplay-Medium";
+	src: url("/fonts/NeueHaasDisplay-Mediu.woff2");
+}
+
+@font-face {
+	font-family: "NeueHaasDisplay-Roman";
+	src: url("/fonts/NeueHaasDisplay-Roman.woff2");
+}
+
+@font-face {
+	font-family: "NeueHaasDisplay-Light";
+	src: url("/fonts/NeueHaasDisplay-Light.woff2");
+}
+
+@font-face {
+	font-family: "ABCSyntMono-Regular-Trial";
+	src: url("/fonts/ABCSyntMono-Regular-Trial.woff2");
+}
+
+@font-face {
+	font-family: "ABCSynt-Medium-Trial";
+	src: url("/fonts/ABCSynt-Medium-Trial.woff2");
+}

@@ -56,39 +56,42 @@ const page = async ({ params }: Params) => {
 	const post: Post = await getPost(params?.slug);
 	console.log(post, "posts on page");
 	return (
-		<div>
+		<div className="mx-auto w-full p-6">
 			<Header title={post?.title}></Header>
-			<div>
+			<div className="font-customMed text-3xl text-center mb-6">
 				<span>{new Date(post?.date).toDateString()}</span>
 			</div>
-			<PortableText value={post.body} />
-			{post?.gallery && post.gallery.images?.length > 0 && (
-				<Carousel post={post} />
-			)}
-			{/* <div>
-				{post?.tags?.map((tag) => (
-					<Link key={tag?._id} href={`/tag/${tag.slug.current}`}>
-						<span>{tag.name}</span>
-					</Link>
-				))}
-			</div> */}
-			<div>
-				<Image
-					src={urlFor(post?.poster).url()}
-					alt={post?.title}
-					width={1000}
-					height={1000}
-				/>
+			<div className="flex flex-col gap-6">
+				<PortableText value={post.body} />
+				{post?.gallery && post.gallery.images?.length > 0 && (
+					<Carousel post={post} />
+				)}
+				{/* <div className="w-full">
+					<Image
+						src={urlFor(post?.poster).url()}
+						alt={post?.title}
+						width={1000}
+						height={1000}
+						className="w-full object-cover"
+					/>
+				</div> */}
+				{post?.videoBlogPost?.video?.asset?.playbackId && (
+					<VideoPlayer
+						playbackId={post.videoBlogPost.video.asset.playbackId}
+						title={post.videoBlogPost.video.asset.filename}
+					/>
+				)}
 			</div>
-
-			{post?.videoBlogPost?.video?.asset?.playbackId && (
-				<VideoPlayer
-					playbackId={post.videoBlogPost.video.asset.playbackId}
-					title={post.videoBlogPost.video.asset.filename}
-				/>
-			)}
 		</div>
 	);
 };
 
 export default page;
+
+/* <div>
+				{post?.tags?.map((tag) => (
+					<Link key={tag?._id} href={`/tag/${tag.slug.current}`}>
+						<span>{tag.name}</span>
+					</Link>
+				))}
+			</div> */

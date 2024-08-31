@@ -1,18 +1,17 @@
 import Link from "next/link";
 import React from "react";
 import Logo from "./Logo";
-import Button from "./Button";
+import Button from "./Buttons/ButtonLarge";
 
 const Navbar = () => {
 	return (
-		<div className="mx-auto max-w-5xl p-6">
-			<div className="flex justify-center items-center h-16 w-full">
+		<div className="mx-auto max-w-full p-6">
+			<div className="flex justify-center items-center w-full">
 				<Link href="/">
-					<div>
-						<Logo />
+					<div className="text-6xl uppercase">
+						<h1 className="font-customSerifMed">Sophia Marinelli</h1>
 					</div>
 				</Link>
-				<Button />
 			</div>
 		</div>
 	);

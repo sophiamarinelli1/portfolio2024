@@ -6,7 +6,7 @@ interface Props {
 
 const Header = ({ title = "" }: Props) => {
 	return (
-		<header>
+		<header className="text-7xl text-center uppercase my-8 font-customSerifMed">
 			<h2>{title}</h2>
 		</header>
 	);
