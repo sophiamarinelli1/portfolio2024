@@ -9,8 +9,8 @@ const config: Config = {
 	theme: {
 		fontFamily: {
 			customBlack: ["NeueHaasDisplay-Black"],
-			customBold: ["NeueHaasDisplay-Bold"],
-			customMed: ["NeueHaasDisplay-Mediu"],
+			customBold: ["ABCDiatype-Bold-Trial"],
+			customMed: ["ABCDiatype-Medium-Trial"],
 			custom: ["NeueHaasDisplay-Roman"],
 			customLight: ["NeueHaasDisplay-Light"],
 			customMono: ["ABCGaisyrMono-Medium-Trial"],

@@ -88,7 +88,6 @@ const AboutComponent = ({ about }: Props) => {
 						</div>
 						<div className="w-full flex flex-row font-customMono text-note mt-1">
 							<p className="grow text-left">2024©</p>
-							<p className="grow text-right">☺</p>
 						</div>
 					</div>
 				)}
@@ -116,7 +115,7 @@ const cardStyle = (isContentVisible: boolean) => `
   lg:w-1/2
   ${isContentVisible ? "h-screen sm:p-8 md:p-16 lg:p-16" : "h-auto sm:p-8 md:p-16 lg:p-16"}
   min-h-[25vh]
-  max-h-[70vh]
+  max-h-[80vh]
   justify-center
   box-border
   mix-blend-normal
