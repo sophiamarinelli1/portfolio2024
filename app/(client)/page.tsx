@@ -3,8 +3,6 @@ import Header from "./components/Header";
 import { About, Post } from "./utils/interface";
 import PostComponent from "./components/PostComponent";
 import AboutComponent from "./components/AboutComponent";
-import Button from "./components/Buttons/ButtonLarge";
-import ImageFlash from "./components/ImageFlash";
 
 async function getAbout() {
 	const query = `*[_type == "about"]{
@@ -61,11 +59,6 @@ export default async function Home() {
 	const aboutData = about[0] || { bio: "", former: "", current: "", _id: "" };
 	return (
 		<div className="">
-			{/* <div className="h-full">
-				{aboutData?.gallery && aboutData.gallery.images?.length > 0 && (
-					<ImageFlash about={aboutData} />
-				)}
-			</div> */}
 			<div className="">
 				<AboutComponent about={aboutData} />
 			</div>
