@@ -22,7 +22,7 @@ const AboutComponent = ({ about }: Props) => {
 			<div
 				className={`flex flex-col justify-between w-full ${isContentVisible ? "h-full" : "h-auto"} sm:text-xl lg:text-2xl`}>
 				<div className="flex flex-row justify-between w-full">
-					<h1 className="font-CustomMed w-full text-4xl h-auto">
+					<h1 className="font-CustomMed w-full sm:text-2xl md:text-4xl lg:text-4xl h-auto">
 						S C. Marinelli
 					</h1>
 					<div
@@ -39,7 +39,7 @@ const AboutComponent = ({ about }: Props) => {
 						<div className="relative flex items-center my-4">
 							<div className="flex-grow border-t border-black"></div>
 						</div>
-						<div className="flex sm:flex-col md:flex-row lg:flex-row w-full mb-4">
+						<div className="flex sm:flex-col md:flex-row lg:flex-row w-full gap-2">
 							<div className="grow w-1/2 font-customMono uppercase text-note">
 								Previously at:
 							</div>
@@ -113,7 +113,8 @@ const cardStyle = (isContentVisible: boolean) => `
   sm:w-3/4
   md:w-1/2
   lg:w-1/2
-  ${isContentVisible ? "h-screen sm:p-8 md:p-16 lg:p-16" : "h-auto sm:p-8 md:p-16 lg:p-16"}
+  ${isContentVisible ? "h-screen" : "h-auto "}
+  sm:p-4 md:p-8 lg:p-16
   min-h-[25vh]
   max-h-[80vh]
   justify-center
