@@ -18,22 +18,23 @@ const AboutComponent = ({ about }: Props) => {
 
 	return (
 		<div className={`${cardStyle(isContentVisible)}`}>
+			{/* Remove h-full or conditionally apply it */}
 			<div
-				className={`flex flex-col ${isContentVisible ? "justify-between" : "justify-center"} sm:text-xl lg:text-2xl`}>
-				<div className="flex justify-between items-start mb-4">
-					<h1 className="font-CustomMed text-4xl h-auto">
-						Sophia C. Marinelli
+				className={`flex flex-col justify-between w-full ${isContentVisible ? "h-full" : "h-auto"} sm:text-xl lg:text-2xl`}>
+				<div className="flex flex-row justify-between w-full">
+					<h1 className="font-CustomMed w-full text-4xl h-auto">
+						S C. Marinelli
 					</h1>
 					<div
 						onClick={handleToggle}
-						className="cursor-pointer text-xl font-bold">
+						className="cursor-pointer text-xl font-bold ml-auto">
 						{isContentVisible ? "x" : "Menu"}
 					</div>
 				</div>
 
 				{/* Conditionally render content */}
 				{isContentVisible && (
-					<div className="flex flex-col flex-grow">
+					<div className="flex flex-col flex-grow justify-between">
 						<span>{about.bio}</span>
 						<div className="relative flex items-center my-4">
 							<div className="flex-grow border-t border-black"></div>
@@ -46,7 +47,7 @@ const AboutComponent = ({ about }: Props) => {
 								<div className="font-customSerifMed flex sm:flex-col md:flex-col lg:flex-col sm:items-start md:items-end">
 									{about.former.map((employer, index) => (
 										<div
-											className="flex w-full items-end text-right mb-1"
+											className="flex w-full items-end sm:text-left md:text-right lg:text-right mb-1"
 											key={employer._key || index}>
 											<Link
 												className="w-full hover:mix-blend-difference"
@@ -85,6 +86,10 @@ const AboutComponent = ({ about }: Props) => {
 								<ButtonLarge title="Contact" />
 							</Link>
 						</div>
+						<div className="w-full flex flex-row font-customMono text-note mt-1">
+							<p className="grow text-left">2024©</p>
+							<p className="grow text-right">☺</p>
+						</div>
 					</div>
 				)}
 			</div>
@@ -109,9 +114,10 @@ const cardStyle = (isContentVisible: boolean) => `
   sm:w-3/4
   md:w-1/2
   lg:w-1/2
-  ${isContentVisible ? "h-screen sm:p-8 md:p-16 lg:p-16" : "h-[25vh] sm:p-2 md:p-4 lg:p-4"}
+  ${isContentVisible ? "h-screen sm:p-8 md:p-16 lg:p-16" : "h-auto sm:p-8 md:p-16 lg:p-16"}
+  min-h-[25vh]
   max-h-[70vh]
-  justify-start
+  justify-center
   box-border
   mix-blend-normal
   text-left
