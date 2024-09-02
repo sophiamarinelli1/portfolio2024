@@ -19,10 +19,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`font-customBold text-body h-full bg-red-300 text-black`}>
-				<Navbar />
+				className={`font-customBold text-body h-full bg-red-100 text-black`}>
 				<main className="mx-auto max-w-full ">{children}</main>
-				<Footer />
 			</body>
 		</html>
 	);

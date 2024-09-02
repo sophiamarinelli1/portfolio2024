@@ -27,7 +27,7 @@ const AboutComponent = ({ about }: Props) => {
 					</h1>
 					<div
 						onClick={handleToggle}
-						className="cursor-pointer text-xl font-bold ml-auto">
+						className="cursor-pointer sm:text-note md:text-xl lg:text-xl font-bold ml-auto">
 						{isContentVisible ? "x" : "Menu"}
 					</div>
 				</div>
@@ -110,12 +110,12 @@ const cardStyle = (isContentVisible: boolean) => `
   flex
   flex-col
   items-center
-  sm:w-3/4
+  sm:w-5/6
   md:w-1/2
   lg:w-1/2
   ${isContentVisible ? "h-screen" : "h-auto "}
-  sm:p-4 md:p-8 lg:p-16
-  min-h-[25vh]
+  sm:p-8 md:p-8 lg:p-16
+  min-h-[15vh]
   max-h-[80vh]
   justify-center
   box-border
