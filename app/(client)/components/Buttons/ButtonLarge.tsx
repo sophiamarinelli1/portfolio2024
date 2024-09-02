@@ -6,7 +6,7 @@ interface Props {
 
 const ButtonLarge = ({ title = "" }: Props) => {
 	return (
-		<button className="border border-black border-4 w-full px-4 py-2  hover:rounded-none font-customMed text-xl uppercase hover:rounded-full hover:border-red-600 hover:bg-red-600 hover:text-white">
+		<button className="w-full px-4 py-4 rounded-lg font-customMed text-actionS bg-zinc-300 hover:border-red-600 hover:bg-red-600 hover:text-white">
 			{title}
 		</button>
 	);

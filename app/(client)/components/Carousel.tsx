@@ -30,11 +30,11 @@ const Carousel = ({ post }: Props) => {
 		<div className="relative w-full h-full text-2xl">
 			{images.length > 0 && (
 				<>
-					<div className="carousel-container w-full h-full overflow-hidden relative">
+					<div className="carousel-container w-full overflow-hidden relative">
 						<Image
 							src={urlFor(images[currentIndex]).url()}
 							alt={`Slide ${currentIndex + 1}`}
-							className="w-full h-full object-cover mix-blend-multiply saturate-0"
+							className="w-full object-contain mix-blend-multiply saturate-0"
 							width={700}
 							height={700}
 						/>

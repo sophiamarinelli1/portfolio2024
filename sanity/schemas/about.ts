@@ -1,3 +1,5 @@
+import { Rule } from "sanity";
+
 export const about = {
 	name: "about",
 	title: "About",
@@ -9,73 +11,6 @@ export const about = {
 			type: "string",
 		},
 		{
-			name: "gallery",
-			type: "object",
-			title: "Gallery",
-			fields: [
-				{
-					name: "images",
-					type: "array",
-					title: "Images",
-					of: [
-						{
-							name: "image",
-							type: "image",
-							title: "Image",
-							options: {
-								hotspot: true,
-							},
-							fields: [
-								{
-									name: "alt",
-									type: "string",
-									title: "Alternative text",
-								},
-							],
-						},
-					],
-					options: {
-						layout: "grid",
-					},
-				},
-				{
-					name: "display",
-					type: "string",
-					title: "Display as",
-					description: "How should we display these images?",
-					options: {
-						list: [
-							{ title: "Stacked on top of eachother", value: "stacked" },
-							{ title: "In-line", value: "inline" },
-							{ title: "Carousel", value: "carousel" },
-						],
-						layout: "radio", // <-- defaults to 'dropdown'
-					},
-				},
-				{
-					name: "zoom",
-					type: "boolean",
-					title: "Zoom enabled",
-					description: "Should we enable zooming of images?",
-				},
-			],
-			preview: {
-				select: {
-					images: "images",
-					image: "images.0",
-				},
-				prepare(selection: any) {
-					const { images, image } = selection;
-
-					return {
-						title: `Gallery block of ${Object.keys(images).length} images`,
-						subtitle: `Alt text: ${image.alt}`,
-						media: image,
-					};
-				},
-			},
-		},
-		{
 			name: "bio",
 			title: "Bio",
 			type: "text",
@@ -83,12 +18,46 @@ export const about = {
 		{
 			name: "former",
 			title: "Former Employers",
-			type: "string",
+			type: "array",
+			of: [
+				{
+					type: "object",
+					fields: [
+						{
+							name: "employerName",
+							title: "Employer Name",
+							type: "string",
+						},
+						{
+							name: "employerUrl",
+							title: "Employer URL",
+							type: "url",
+						},
+					],
+				},
+			],
 		},
 		{
 			name: "current",
 			title: "Current Employer",
-			type: "string",
+			type: "object",
+			fields: [
+				{
+					name: "employerName",
+					title: "Employer Name",
+					type: "string",
+				},
+				{
+					name: "employerUrl",
+					title: "Employer URL",
+					type: "url",
+					validation: (Rule: Rule) =>
+						Rule.uri({
+							allowRelative: true,
+							scheme: ["http", "https"],
+						}).optional(),
+				},
+			],
 		},
 		{
 			name: "other",

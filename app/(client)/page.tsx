@@ -8,19 +8,19 @@ import ImageFlash from "./components/ImageFlash";
 
 async function getAbout() {
 	const query = `*[_type == "about"]{
-	bio,
-	former,
-	current,
-	_id,
-			gallery {
-			images[] {
-				asset->{
-					_ref,
-					url
-				}
-			}
-		},
-	}`;
+  title,
+  bio,
+  former[]{
+    employerName,
+    employerUrl
+  },
+  current{
+    employerName,
+    employerUrl
+  },
+  other,
+  _id
+}`;
 	const data = await client.fetch(query);
 	return data;
 }
@@ -68,17 +68,14 @@ export default async function Home() {
 			</div> */}
 			<div className="">
 				<AboutComponent about={aboutData} />
-				<div className="px-6">
-					<Button title="Click Here for Inquiries" />
-				</div>
 			</div>
-			<div className=" px-6 py-6 h-full">
+			{/* <div className=" px-6 py-6 h-full">
 				<Header title="Projects"></Header>
 				<div className="h-full">
 					{posts?.length > 0 &&
 						posts?.map((post) => <PostComponent key={post?._id} post={post} />)}
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }

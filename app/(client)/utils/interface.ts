@@ -38,19 +38,16 @@ export interface Tag {
 
 export interface About {
 	title: string;
-	gallery?: {
-		images: Array<{
-			asset: {
-				_ref: string;
-				url: string;
-			};
-		}>;
-		display: string;
-		zoom: boolean;
-	};
 	bio: string;
-	former: string;
-	current: string;
+	former: Array<{
+		employerName: string;
+		employerUrl: string;
+		_key?: string;
+	}>;
+	current: {
+		employerName: string;
+		employerUrl: string;
+	};
 	other: string;
 	_id: string;
 }
