@@ -4,7 +4,11 @@ export interface Post {
 	slug: { current: string };
 	date: string;
 	excerpt: string;
-	collaborators: string;
+	collaborators: Array<{
+		collaboratorName: string;
+		collaboratorUrl: string;
+		_key?: string;
+	}>;
 	body: any;
 	tags: Array<Tag>;
 	_id: string;

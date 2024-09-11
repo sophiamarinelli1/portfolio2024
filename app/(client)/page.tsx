@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import { About, Post } from "./utils/interface";
 import PostComponent from "./components/PostComponent";
 import AboutComponent from "./components/AboutComponent";
+import AboutComponentAlt from "./components/AboutComponentAlt";
 
 async function getAbout() {
 	const query = `*[_type == "about"]{
@@ -60,15 +61,14 @@ export default async function Home() {
 	return (
 		<div className="">
 			<div className="">
-				<AboutComponent about={aboutData} />
+				<AboutComponentAlt about={aboutData} />
 			</div>
-			{/* <div className=" px-6 py-6 h-full">
-				<Header title="Projects"></Header>
-				<div className="h-full">
+			<div className="">
+				<div className="">
 					{posts?.length > 0 &&
 						posts?.map((post) => <PostComponent key={post?._id} post={post} />)}
 				</div>
-			</div> */}
+			</div>
 		</div>
 	);
 }

@@ -8,6 +8,9 @@ import Carousel from "../../components/Carousel";
 import VideoPlayer from "../../components/VideoPlayer";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import ButtonSmall from "../../components/Buttons/ButtonSmall";
+import Tag from "../../components/Buttons/Tag";
+import ButtonLarge from "../../components/Buttons/ButtonLarge";
 
 interface Params {
 	params: {
@@ -21,6 +24,10 @@ async function getPost(slug: string) {
 		poster,
 		slug,
 		date,
+		collaborators[]{
+    		collaboratorName,
+    		collaboratorUrl
+  },
 		_id,
 		excerpt,
 		body,
@@ -56,25 +63,54 @@ const page = async ({ params }: Params) => {
 	const post: Post = await getPost(params?.slug);
 	console.log(post, "posts on page");
 	return (
-		<div className="mx-auto w-full p-6">
-			<Header title={post?.title}></Header>
-			<div className="font-customMed text-3xl text-center mb-6">
-				<span>{new Date(post?.date).toDateString()}</span>
+		<div className="mx-auto w-full h-screen">
+			<Image
+				src={urlFor(post?.poster).url()}
+				alt={post?.title}
+				width={1000}
+				height={1000}
+				className="w-full h-screen absolute top-0 left-0 z-[-50] object-cover"
+			/>
+			<div className="fixed top-6 left-6">
+				<ButtonSmall href="/" title="Back"></ButtonSmall>
 			</div>
+
+			<div className="h-screen w-full text-black flex gap-1 flex-col justify-center text-center text-7xl">
+				<h1 className="">{post?.title}</h1>
+
+				<div className="absolute bottom-0 flex  w-full justify-between text-note uppercase bg-white">
+					<div className="flex sm:flex-col md:flex-row lg:flex-row flex-1 w-1/3 sm:gap-0 md:gap-2 lg:gap-2 pl-6 ">
+						<p>With:</p>
+						{post.collaborators.map((collaborator, index) => (
+							<div className="" key={collaborator._key || index}>
+								<Link
+									className="w-full hover:text-white hover:mix-blend-difference"
+									href={collaborator.collaboratorUrl}
+									target="_blank"
+									rel="noopener noreferrer">
+									{collaborator.collaboratorName}
+								</Link>
+							</div>
+						))}
+					</div>
+					<p className="flex-1 w-1/3 text-center">
+						{new Date(post?.date).getFullYear()}
+					</p>
+					<div className="flex-1 w-1/3 pr-6">
+						<Tag post={post}></Tag>
+					</div>
+				</div>
+			</div>
+			<PortableText value={post.body} />
+
+			{/* {post?.gallery && post.gallery.images?.length > 0 && (
+				<Carousel post={post} />
+			)} */}
+
 			<div className="flex flex-col gap-6">
-				<PortableText value={post.body} />
-				{post?.gallery && post.gallery.images?.length > 0 && (
-					<Carousel post={post} />
-				)}
-				{/* <div className="w-full">
-					<Image
-						src={urlFor(post?.poster).url()}
-						alt={post?.title}
-						width={1000}
-						height={1000}
-						className="w-full object-cover"
-					/>
-				</div> */}
+				<div className="w-full"></div>
+				<p>{post?.excerpt}</p>
+
 				{post?.videoBlogPost?.video?.asset?.playbackId && (
 					<VideoPlayer
 						playbackId={post.videoBlogPost.video.asset.playbackId}

@@ -18,8 +18,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body
-				className={`font-customBold text-body h-full bg-red-100 text-black`}>
+			<body className={`font-customMed text-body h-full bg-white text-black`}>
 				<main className="mx-auto max-w-full ">{children}</main>
 			</body>
 		</html>

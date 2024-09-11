@@ -1,14 +1,18 @@
+import Link from "next/link";
 import React from "react";
 
 interface Props {
 	title: string;
+	href: string;
 }
 
-const ButtonSmall = ({ title = "" }: Props) => {
+const ButtonSmall = ({ title = "", href = "" }: Props) => {
 	return (
-		<button className="border border-black border-4 px-4 py-2  hover:rounded-none font-customBold text-note hover:rounded-full hover:border-red-600 hover:bg-red-600 hover:text-white">
-			{title}
-		</button>
+		<Link href={href}>
+			<button className="border border-black border px-4 py-2  hover:rounded-none font-customBold uppercase rounded-sm text-note hover:border-black hover:bg-black hover:text-white">
+				{title}
+			</button>
+		</Link>
 	);
 };
 

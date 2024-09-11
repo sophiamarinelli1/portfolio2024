@@ -10,7 +10,7 @@ interface Props {
 	about: About;
 }
 
-const AboutComponent = ({ about }: Props) => {
+const AboutComponentAlt = ({ about }: Props) => {
 	const [isContentVisible, setIsContentVisible] = useState(true);
 
 	const handleToggle = () => {
@@ -21,14 +21,10 @@ const AboutComponent = ({ about }: Props) => {
 		<div className={`${cardStyle(isContentVisible)}`}>
 			{/* Remove h-full or conditionally apply it */}
 			<div
-				className={`flex flex-col justify-between w-full ${isContentVisible ? "h-full" : "h-auto"} sm:text-xl lg:text-xl`}>
+				className={`flex flex-col justify-between w-full ${isContentVisible ? "h-full" : "h-auto"}`}>
 				<div className="flex flex-row justify-between w-full">
-					<h1 className="font-CustomMed w-full sm:text-xl md:text-xl lg:text-xl h-auto">
-						Sophia C. Marinelli
-					</h1>
-					<div
-						onClick={handleToggle}
-						className="cursor-pointer sm:text-note md:text-xl lg:text-xl font-bold ml-auto">
+					<h1 className=" uppercase h-auto">Sophia C. Marinelli</h1>
+					<div onClick={handleToggle} className="cursor-pointer ml-auto">
 						{isContentVisible ? "x" : "Menu"}
 					</div>
 				</div>
@@ -45,7 +41,7 @@ const AboutComponent = ({ about }: Props) => {
 								Previously at:
 							</div>
 							<div className="w-full">
-								<div className="font-customSerifMed flex sm:flex-col md:flex-col lg:flex-col sm:items-start md:items-end">
+								<div className="font-customMed flex sm:flex-col md:flex-col lg:flex-col sm:items-start md:items-end">
 									{about.former.map((employer, index) => (
 										<div
 											className="flex w-full items-end sm:text-left md:text-right lg:text-right mb-1"
@@ -100,16 +96,17 @@ const AboutComponent = ({ about }: Props) => {
 	);
 };
 
-export default AboutComponent;
+export default AboutComponentAlt;
 
 const cardStyle = (isContentVisible: boolean) => `
+font-customMed 
+text-body
   fixed
   inset-1/2
   transform
   -translate-x-1/2
   -translate-y-1/2
   shadow-[0px_0px_32px_rgba(0,_0,_0,_0.15)]
-  text-xl
   rounded-2xl
   flex
   flex-col

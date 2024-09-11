@@ -48,7 +48,24 @@ export const post = {
 		{
 			name: "collaborators",
 			title: "Collaborators",
-			type: "string",
+			type: "array",
+			of: [
+				{
+					type: "object",
+					fields: [
+						{
+							name: "collaboratorName",
+							title: "Collaborator Name",
+							type: "string",
+						},
+						{
+							name: "collaboratorUrl",
+							title: "Collaborator URL",
+							type: "url",
+						},
+					],
+				},
+			],
 		},
 		{
 			name: "excerpt",
