@@ -11,6 +11,7 @@ import { urlFor } from "@/sanity/lib/image";
 import ButtonSmall from "../../components/Buttons/ButtonSmall";
 import Tag from "../../components/Buttons/Tag";
 import ButtonLarge from "../../components/Buttons/ButtonLarge";
+import ArrowRight from "../../components/Icons/ArrowRight";
 
 interface Params {
 	params: {
@@ -64,53 +65,52 @@ const page = async ({ params }: Params) => {
 	console.log(post, "posts on page");
 	return (
 		<div className="mx-auto w-full h-screen">
-			<Image
-				src={urlFor(post?.poster).url()}
-				alt={post?.title}
-				width={1000}
-				height={1000}
-				className="w-full h-screen absolute top-0 left-0 z-[-50] object-cover"
-			/>
-			<div className="fixed top-6 left-6">
+			<div className="fixed top-6 left-6 z-[50]">
 				<ButtonSmall href="/" title="Back"></ButtonSmall>
 			</div>
+			<div className="flex sm:flex-col md:flex-row lg:flex-row">
+				{post?.gallery && post.gallery.images?.length > 0 && (
+					<Carousel post={post} />
+				)}
+				<div className="sm:w-full md:w-full lg:w-1/2 m-auto">
+					<div className={richTextStyles}>
+						<div className="flex sm:flex-row md:flex-row flex-row gap-4 justify-between sm:w-full md:w-full lg:w-3/4">
+							<h1 className="text-center">{post?.title}</h1>
+							<p className="">{new Date(post?.date).getFullYear()}</p>
+						</div>
 
-			<div className="h-screen w-full text-black flex gap-1 flex-col justify-center text-center text-7xl">
-				<h1 className="">{post?.title}</h1>
-
-				<div className="absolute bottom-0 flex  w-full justify-between text-note uppercase bg-white">
-					<div className="flex sm:flex-col md:flex-row lg:flex-row flex-1 w-1/3 sm:gap-0 md:gap-2 lg:gap-2 pl-6 ">
-						<p>With:</p>
-						{post.collaborators.map((collaborator, index) => (
-							<div className="" key={collaborator._key || index}>
-								<Link
-									className="w-full hover:text-white hover:mix-blend-difference"
-									href={collaborator.collaboratorUrl}
-									target="_blank"
-									rel="noopener noreferrer">
-									{collaborator.collaboratorName}
-								</Link>
+						<div className="sm:w-full md:w-full lg:w-3/4">
+							<PortableText value={post.body} />
+						</div>
+						<div className="sm:w-full md:w-full lg:w-3/4">
+							<div className="flex sm:flex-col md:flex-row lg:flex-row flex-1 w-full gap-12">
+								<p className="">With:</p>
+								<div className="flex flex-col gap-1 w-full">
+									{post.collaborators.map((collaborator, index) => (
+										<div
+											className="flex flex-row border-b border-black"
+											key={collaborator._key || index}>
+											<Link
+												className="w-full hover:text-white hover:mix-blend-difference"
+												href={collaborator.collaboratorUrl}
+												target="_blank"
+												rel="noopener noreferrer">
+												{collaborator.collaboratorName}
+											</Link>
+											<ArrowRight />
+										</div>
+									))}
+								</div>
 							</div>
-						))}
-					</div>
-					<p className="flex-1 w-1/3 text-center">
-						{new Date(post?.date).getFullYear()}
-					</p>
-					<div className="flex-1 w-1/3 pr-6">
-						<Tag post={post}></Tag>
+						</div>
+						<div className="sm:w-full md:w-full lg:w-3/4">
+							<Tag post={post}></Tag>
+						</div>
 					</div>
 				</div>
 			</div>
-			<PortableText value={post.body} />
-
-			{/* {post?.gallery && post.gallery.images?.length > 0 && (
-				<Carousel post={post} />
-			)} */}
 
 			<div className="flex flex-col gap-6">
-				<div className="w-full"></div>
-				<p>{post?.excerpt}</p>
-
 				{post?.videoBlogPost?.video?.asset?.playbackId && (
 					<VideoPlayer
 						playbackId={post.videoBlogPost.video.asset.playbackId}
@@ -131,3 +131,22 @@ export default page;
 					</Link>
 				))}
 			</div> */
+// <Image
+// 	src={urlFor(post?.poster).url()}
+// 	alt={post?.title}
+// 	width={1000}
+// 	height={1000}
+// 	className="w-1/2 h-screen absolute t-0 r-0 z-[-50] object-cover"
+// />;
+
+const richTextStyles = `
+p-6
+w-full
+h-full
+text-justify
+prose-heading:text-2xl
+flex
+flex-col
+items-center
+gap-12
+`;

@@ -25,18 +25,6 @@ const PostComponent = ({ post }: Props) => {
 					className="w-full h-screen object-cover"
 				/>
 			</Link>
-			<div className="absolute bottom-0 flex w-full justify-between text-note uppercase bg-white">
-				<div className="flex flex-1 w-1/3 gap-2 pl-6 ">
-					<p>{post?.title}</p>
-				</div>
-				<p className="flex-1 w-1/3 text-right pr-6">
-					{new Date(post?.date).getFullYear()}
-				</p>
-			</div>
-
-			{/* {post?.gallery && post.gallery.images?.length > 0 && (
-				<Carousel post={post} />
-			)} */}
 		</div>
 	);
 };

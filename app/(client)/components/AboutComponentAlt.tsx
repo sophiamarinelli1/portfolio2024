@@ -23,7 +23,7 @@ const AboutComponentAlt = ({ about }: Props) => {
 			<div
 				className={`flex flex-col justify-between w-full ${isContentVisible ? "h-full" : "h-auto"}`}>
 				<div className="flex flex-row justify-between w-full">
-					<h1 className=" uppercase h-auto">Sophia C. Marinelli</h1>
+					<h1 className=" font-customBold h-auto">Sophia C. Marinelli</h1>
 					<div onClick={handleToggle} className="cursor-pointer ml-auto">
 						{isContentVisible ? "x" : "Menu"}
 					</div>
@@ -32,7 +32,7 @@ const AboutComponentAlt = ({ about }: Props) => {
 				{isContentVisible && (
 					<div className="flex flex-col flex-grow justify-between mt-8">
 						<span>{about.bio}</span>
-						<Hyperlink title="Read More"></Hyperlink>
+						{/* <Hyperlink title="Read More"></Hyperlink> */}
 						<div className="relative flex items-center my-4">
 							<div className="flex-grow border-t border-black"></div>
 						</div>
@@ -76,9 +76,9 @@ const AboutComponentAlt = ({ about }: Props) => {
 							<div className="flex-grow border-t border-black"></div>
 						</div>
 						<div className="flex sm:flex-col md:flex-row lg:flex-row gap-2">
-							<div className="grow sm:w-full md:w-1/2 lg:w-1/2">
+							{/* <div className="grow sm:w-full md:w-1/2 lg:w-1/2">
 								<ButtonLarge href="/" title="View Projects" />
-							</div>
+							</div> */}
 							<div className="grow sm:w-full md:w-1/2 lg:w-1/2">
 								<ButtonLarge
 									href="mailto:phiamarinelli@gmail.com"
@@ -123,7 +123,7 @@ text-body
   text-left
   text-black
   z-[50]
-  bg-zinc-200/40
+  bg-zinc-200/50
     backdrop-blur-md
   content-center
 

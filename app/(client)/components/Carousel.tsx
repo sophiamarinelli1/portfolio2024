@@ -27,19 +27,19 @@ const Carousel = ({ post }: Props) => {
 	};
 
 	return (
-		<div className="relative w-full h-full text-xl">
+		<div className="relative sm:w-full md:w-full lg:w-1/2 sm:h-[75vh] md:h-screen lg:h-screen ">
 			{images.length > 0 && (
 				<>
-					<div className="carousel-container w-full overflow-hidden relative">
+					<div className="carousel-container w-full h-full overflow-hidden relative">
 						<Image
 							src={urlFor(images[currentIndex]).url()}
 							alt={`Slide ${currentIndex + 1}`}
-							className="w-full object-contain "
+							className="w-full h-full sm:object-contain lg:object-cover "
 							width={700}
 							height={700}
 						/>
 					</div>
-					<div className="carousel-controls absolute bottom-0 flex justify-between w-full items-center px-6">
+					<div className="carousel-controls absolute bottom-6 flex justify-between w-full items-center px-6 text-white mix-blend-difference">
 						<button onClick={goToPrevious} className="p-2 ">
 							Previous
 						</button>

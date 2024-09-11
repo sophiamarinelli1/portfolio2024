@@ -1,9 +1,8 @@
 import { client } from "@/sanity/lib/client";
-import Header from "./components/Header";
 import { About, Post } from "./utils/interface";
 import PostComponent from "./components/PostComponent";
-import AboutComponent from "./components/AboutComponent";
 import AboutComponentAlt from "./components/AboutComponentAlt";
+import ImageFlash from "./components/ImageFlash";
 
 async function getAbout() {
 	const query = `*[_type == "about"]{
@@ -18,7 +17,15 @@ async function getAbout() {
     employerUrl
   },
   other,
-  _id
+  _id,
+  	gallery {
+			images[] {
+				asset->{
+					_ref,
+					url
+				}
+			}
+		}
 }`;
 	const data = await client.fetch(query);
 	return data;
@@ -63,12 +70,13 @@ export default async function Home() {
 			<div className="">
 				<AboutComponentAlt about={aboutData} />
 			</div>
-			<div className="">
+			<ImageFlash about={aboutData} />
+			{/* <div className="">
 				<div className="">
 					{posts?.length > 0 &&
 						posts?.map((post) => <PostComponent key={post?._id} post={post} />)}
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }

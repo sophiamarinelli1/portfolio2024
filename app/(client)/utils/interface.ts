@@ -54,4 +54,14 @@ export interface About {
 	};
 	other: string;
 	_id: string;
+	gallery?: {
+		images: Array<{
+			asset: {
+				_ref: string;
+				url: string;
+			};
+		}>;
+		display: string;
+		zoom: boolean;
+	};
 }

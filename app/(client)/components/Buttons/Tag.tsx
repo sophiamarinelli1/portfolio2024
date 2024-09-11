@@ -7,11 +7,9 @@ interface Props {
 
 const Tag = ({ post }: Props) => {
 	return (
-		<div className="flex flex-wrap gap-2 w-full justify-end">
+		<div className="flex flex-wrap gap-2 ">
 			{post?.tags?.map((tag) => (
-				<div
-					className=" inline-block text-note uppercase hover:bg-black hover:text-white"
-					key={tag?._id}>
+				<div className="  text-note uppercase" key={tag?._id}>
 					{tag?.name}
 				</div>
 			))}
