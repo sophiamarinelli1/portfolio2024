@@ -8,7 +8,7 @@ const config: Config = {
 	],
 	theme: {
 		fontFamily: {
-			customBlack: ["NeueHaasDisplay-Black"],
+			customBlack: ["Franklin Gothic Heavy, Regular"],
 			customBold: ["ABCMonumentGrotesk-Bold-Trial"],
 			customMed: ["ABCMonumentGrotesk-Medium-Trial"],
 			custom: ["NeueHaasDisplay-Roman"],
@@ -34,8 +34,8 @@ const config: Config = {
 				xl: ["24px", { lineHeight: "28px", letterSpacing: "0.0em" }],
 				"2xl": ["32px", { lineHeight: "36px", letterSpacing: "-0.01em" }],
 				"3xl": ["48px", { lineHeight: "48px", letterSpacing: "-0.01em" }],
-				"4xl": ["64px", { lineHeight: "64px", letterSpacing: "-0.01em" }],
-				"6xl": ["96px", { lineHeight: "92px", letterSpacing: "-0.01em" }],
+				"4xl": ["64px", { lineHeight: "64px", letterSpacing: "-0.02em" }],
+				"6xl": ["96px", { lineHeight: "92px", letterSpacing: "-0.03em" }],
 				"7xl": ["212px", { lineHeight: "212px", letterSpacing: "-0.02em" }],
 			},
 			screens: {

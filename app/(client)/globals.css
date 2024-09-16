@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-	font-family: "NeueHaasDisplay-Black";
-	src: url("/fonts/NeueHaasDisplay-Black.woff2");
+	font-family: "Franklin Gothic Heavy, Regular";
+	src: url("/fonts/Franklin Gothic Heavy, Regular.woff2");
 }
 
 @font-face {
