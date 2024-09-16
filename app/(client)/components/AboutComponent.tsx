@@ -14,7 +14,7 @@ interface Props {
 const AboutComponent = ({ about }: Props) => {
 	return (
 		<div>
-			<div className="font-customBlack w-full mx-4 sm:text-3xl lg:text-6xl">
+			<div className="font-customBlack w-full m-4 sm:text-2xl lg:text-6xl">
 				<div className="flex flex-col w-full">
 					<p className="">{about.bio}</p>
 					<div className=" flex sm:flex-col lg:flex-row gap-8 mt-8 text-2xl">
