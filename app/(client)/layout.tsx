@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`font-customMed text-body h-full bg-white text-black`}>
+			<body className={`font-customBlack text-body h-full bg-cream text-pink`}>
 				<main className="mx-auto max-w-full ">{children}</main>
 			</body>
 		</html>

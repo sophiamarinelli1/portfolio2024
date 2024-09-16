@@ -1,11 +1,9 @@
 import React from "react";
-import Header from "../../components/Header";
 import { client } from "@/sanity/lib/client";
 import { Post } from "../../utils/interface";
 import Link from "next/link";
 import { PortableText } from "next-sanity";
 import Carousel from "../../components/Carousel";
-import VideoPlayer from "../../components/VideoPlayer";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import ButtonSmall from "../../components/Buttons/ButtonSmall";
@@ -38,23 +36,19 @@ async function getPost(slug: string) {
 			name
 		},
 		gallery {
-			images[] {
+			media[] {
+				_type,
 				asset->{
 					_ref,
 					url
-				}
-			}
+				},
+				vimeoUrl,
+				alt,
+				caption
+			},
+			display,
+			zoom
 		},
-		"videoBlogPost": videoBlogPost {
-    	video {
-      	asset->{
-        playbackId,
-        assetId,
-        filename,
-        url
-      }
-    }
-  }
 	}`;
 	const post = await client.fetch(query);
 	return post;
@@ -69,7 +63,7 @@ const page = async ({ params }: Params) => {
 				<ButtonSmall href="/" title="Back"></ButtonSmall>
 			</div>
 			<div className="flex sm:flex-col md:flex-row lg:flex-row">
-				{post?.gallery && post.gallery.images?.length > 0 && (
+				{post?.gallery && post.gallery.media?.length > 0 && (
 					<Carousel post={post} />
 				)}
 				<div className="sm:w-full md:w-full lg:w-1/2 m-auto">
@@ -110,34 +104,12 @@ const page = async ({ params }: Params) => {
 				</div>
 			</div>
 
-			<div className="flex flex-col gap-6">
-				{post?.videoBlogPost?.video?.asset?.playbackId && (
-					<VideoPlayer
-						playbackId={post.videoBlogPost.video.asset.playbackId}
-						title={post.videoBlogPost.video.asset.filename}
-					/>
-				)}
-			</div>
+			<div className="flex flex-col gap-6"></div>
 		</div>
 	);
 };
 
 export default page;
-
-/* <div>
-				{post?.tags?.map((tag) => (
-					<Link key={tag?._id} href={`/tag/${tag.slug.current}`}>
-						<span>{tag.name}</span>
-					</Link>
-				))}
-			</div> */
-// <Image
-// 	src={urlFor(post?.poster).url()}
-// 	alt={post?.title}
-// 	width={1000}
-// 	height={1000}
-// 	className="w-1/2 h-screen absolute t-0 r-0 z-[-50] object-cover"
-// />;
 
 const richTextStyles = `
 p-6

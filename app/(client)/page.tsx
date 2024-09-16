@@ -1,8 +1,7 @@
 import { client } from "@/sanity/lib/client";
 import { About, Post } from "./utils/interface";
 import PostComponent from "./components/PostComponent";
-import AboutComponentAlt from "./components/AboutComponentAlt";
-import ImageFlash from "./components/ImageFlash";
+import AboutComponent from "./components/AboutComponent";
 
 async function getAbout() {
 	const query = `*[_type == "about"]{
@@ -41,10 +40,24 @@ async function getPosts() {
   	_id,
   	excerpt,
 	gallery {
-			images[] {
-				asset->{
-					_ref,
-					url
+			media[] {
+				_type == "image" => {
+					_type,
+					asset->{
+						_ref,
+						url
+					},
+					alt
+				},
+				_type == "video" => {
+					_type,
+					muxVideo {
+						asset->{
+							_ref,
+							playbackId
+						}
+					},
+					caption
 				}
 			}
 		},
@@ -68,14 +81,11 @@ export default async function Home() {
 	return (
 		<div className="">
 			<div className="">
-				<AboutComponentAlt about={aboutData} />
+				<AboutComponent about={aboutData} />
 			</div>
-			<ImageFlash about={aboutData} />
-			{/* <div className="">
-				<div className="">
-					{posts?.length > 0 &&
-						posts?.map((post) => <PostComponent key={post?._id} post={post} />)}
-				</div>
+			{/* <div className="flex flex-col gap-0">
+				{posts?.length > 0 &&
+					posts?.map((post) => <PostComponent key={post?._id} post={post} />)}
 			</div> */}
 		</div>
 	);

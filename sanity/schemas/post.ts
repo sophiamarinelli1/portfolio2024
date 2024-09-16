@@ -121,9 +121,9 @@ export const post = {
 			title: "Gallery",
 			fields: [
 				{
-					name: "images",
+					name: "media",
 					type: "array",
-					title: "Images",
+					title: "Images/Videos",
 					of: [
 						{
 							name: "image",
@@ -140,47 +140,40 @@ export const post = {
 								},
 							],
 						},
+						{
+							name: "video",
+							type: "object",
+							title: "Video",
+							fields: [
+								{
+									name: "vimeoUrl",
+									type: "url",
+									title: "Vimeo URL",
+								},
+								{
+									name: "caption",
+									type: "string",
+									title: "Video caption",
+									description: "Optional caption for the video",
+								},
+							],
+							preview: {
+								select: {
+									title: "caption",
+									media: "vimeoUrl",
+								},
+								prepare(selection: { title?: string; media?: string }) {
+									const { title, media } = selection;
+									return {
+										title: title || "Vimeo Video",
+										subtitle: media ? `URL: ${media}` : "No video URL",
+									};
+								},
+							},
+						},
 					],
-					options: {
-						layout: "grid",
-					},
-				},
-				{
-					name: "display",
-					type: "string",
-					title: "Display as",
-					description: "How should we display these images?",
-					options: {
-						list: [
-							{ title: "Stacked on top of eachother", value: "stacked" },
-							{ title: "In-line", value: "inline" },
-							{ title: "Carousel", value: "carousel" },
-						],
-						layout: "radio", // <-- defaults to 'dropdown'
-					},
-				},
-				{
-					name: "zoom",
-					type: "boolean",
-					title: "Zoom enabled",
-					description: "Should we enable zooming of images?",
 				},
 			],
-			preview: {
-				select: {
-					images: "images",
-					image: "images.0",
-				},
-				prepare(selection: any) {
-					const { images, image } = selection;
-
-					return {
-						title: `Gallery block of ${Object.keys(images).length} images`,
-						subtitle: `Alt text: ${image.alt}`,
-						media: image,
-					};
-				},
-			},
 		},
 	],
 };

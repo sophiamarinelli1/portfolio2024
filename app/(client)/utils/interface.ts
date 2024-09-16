@@ -13,11 +13,15 @@ export interface Post {
 	tags: Array<Tag>;
 	_id: string;
 	gallery?: {
-		images: Array<{
-			asset: {
-				_ref: string;
-				url: string;
+		media: Array<{
+			_type: "image" | "video"; // Media type can be either image or Vimeo video
+			asset?: {
+				_ref?: string; // Image asset reference
+				url?: string; // Image URL
 			};
+			vimeoUrl?: string; // Vimeo video URL
+			alt?: string; // Alt text for images
+			caption?: string; // Optional caption for videos
 		}>;
 		display: string;
 		zoom: boolean;
